@@ -2,8 +2,25 @@
 <html>
   <head>
     <title>Todo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <script src="../src/index.js"></script>
+    <h1>List do to</h1>
+    <a href="#" id="addProject">Add Project</a>
+    <a href="#" id="addListNoProj">Add list without project</a>
+
+    <div id="projectModel" class="projectModel">
+      <h2>Add a new project</h2>
+      <form class="form">
+        <fieldset>
+          <label for="title">Project's title:</label>
+          <input type="text" id="title" required>
+        </fieldset>
+        <button id="submitProject">Create</button>
+      </form>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

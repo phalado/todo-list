@@ -90,10 +90,35 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("function Project(title, status, list) {\r\n  this.id\r\n  this.title = title;\r\n  this.list = [];\r\n  this.list.push(list);\r\n  this.status = status;\r\n}\r\n\r\nfunction List(title, desc, dueDate, priority, status) {\r\n  this.id\r\n  this.title = title;\r\n  this.desc = desc;\r\n  this.dueDate = dueDate;\r\n  this.priority = priority;\r\n  this.status = status;\r\n}\r\n\r\nfunction testAddProj() {\r\n  let list1 = new List(\r\n    'testList',\r\n    'desc',\r\n    10/10/20,\r\n    1,\r\n    false);\r\n  console.log(list1);\r\n  let test = new Project(\r\n    'Test',\r\n    false,\r\n    list1\r\n    );\r\n  console.log(test);\r\n}\r\n\r\ntestAddProj();\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n/* harmony import */ var _list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list */ \"./src/list.js\");\n\n\n\nfunction openProjectModel() {\n  document.getElementById('projectModel').style.display = 'grid';\n}\n\nfunction init() {\n  const allProjs = Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"allProjects\"])();\n  const firstProject = Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"addProject\"])('firstProject',\n                                  false,\n                                  [],\n                                  allProjs);\n\n  document.getElementById('addProject').addEventListener('click', openProjectModel);\n  document.getElementById('submitProject').addEventListener('click', getProjectsData);\n\n  return allProjs;\n}\n\nfunction getProjectsData() {\n  const allProjs = Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"allProjects\"])();\n  console.log(allProjs.getProjs());\n  const title = document.getElementById('title').value;\n  Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"addProject\"])(title, false, [], allProjs);\n}\n\nfunction testAddProj() {\n  let allProjs = init();\n  const test = Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"addProject\"])('Test', false, Object(_list__WEBPACK_IMPORTED_MODULE_1__[\"addList\"])('testList', 'desc', '10/10/20', 1, false), allProjs);\n  const test2 = Object(_projects__WEBPACK_IMPORTED_MODULE_0__[\"addProject\"])('Test2', true, Object(_list__WEBPACK_IMPORTED_MODULE_1__[\"addList\"])('testList', 'desc', '10/10/20', 1, true), allProjs);\n  test.list.push(Object(_list__WEBPACK_IMPORTED_MODULE_1__[\"addList\"])('testList2', 'desc2', '10/10/20', 1, true));\n  // console.log(test);\n  console.log(allProjs.getProjs());\n}\n\n// let allProjs = init();\ntestAddProj();\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/list.js":
+/*!*********************!*\
+  !*** ./src/list.js ***!
+  \*********************/
+/*! exports provided: List, addList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"List\", function() { return List; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addList\", function() { return addList; });\nfunction List(title, desc, dueDate, priority, status) {\n  this.title = title;\n  this.desc = desc;\n  this.dueDate = dueDate;\n  this.priority = priority;\n  this.status = status;\n}\n\nfunction addList(title, desc, dueDate, priority, status) {\n  const list = new List(\n    title,\n    desc,\n    dueDate,\n    priority,\n    status\n  );\n  return list;\n}\n\n\n\n//# sourceURL=webpack:///./src/list.js?");
+
+/***/ }),
+
+/***/ "./src/projects.js":
+/*!*************************!*\
+  !*** ./src/projects.js ***!
+  \*************************/
+/*! exports provided: Project, allProjects, addProject */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Project\", function() { return Project; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"allProjects\", function() { return allProjects; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addProject\", function() { return addProject; });\nfunction Project(title, status, list) {\n  this.title = title;\n  this.list = [];\n  this.list.push(list);\n  this.status = status;\n}\n\nconst allProjects = () => {\n  const allProjs = [];\n\n  const addProj = (Project) => {\n    allProjs.push(Project);\n  };\n\n  const getProjs = () => {\n    return allProjs;\n  };\n\n  return { allProjs, addProj, getProjs };\n};\n\nfunction addProject(title, status, list, allProjs = this.allProjs) {\n  const project = new Project(\n    title,\n    status,\n    list\n  );\n  allProjs.addProj(project);\n  return project;\n}\n\n\n\n//# sourceURL=webpack:///./src/projects.js?");
 
 /***/ })
 
