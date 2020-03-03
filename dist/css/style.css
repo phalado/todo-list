@@ -1,3 +1,7 @@
+body {
+  margin: 15px;
+}
+
 .projectModel {
   position: absolute;
   width: 50%;
@@ -7,4 +11,31 @@
   /*color: white;*/
   text-align: center;
   display: none;
+}
+
+.taskModel {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 15%;
+  left: 25%;
+  background-color: white;
+  /*color: white;*/
+  text-align: center;
+  display: none;
+}
+
+.taskModel fieldset {
+  margin-top: 10px;
+}
+
+.taskModel button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.taskModel form {
+  margin-top: 15px;
+  border-style: solid;
+  background-color: white;
 }

@@ -12,7 +12,7 @@ function addList(title, desc, dueDate, priority, status) {
     desc,
     dueDate,
     priority,
-    status
+    status,
   );
   return list;
 }

@@ -12,9 +12,7 @@ const allProjects = () => {
     allProjs.push(Project);
   };
 
-  const getProjs = () => {
-    return allProjs;
-  };
+  const getProjs = () => allProjs;
 
   return { allProjs, addProj, getProjs };
 };
@@ -23,10 +21,12 @@ function addProject(title, status, list, allProjs = this.allProjs) {
   const project = new Project(
     title,
     status,
-    list
+    list,
   );
   allProjs.addProj(project);
   return project;
 }
+
+
 
 export { Project, allProjects, addProject };

@@ -8,17 +8,48 @@
   <body>
     <h1>List do to</h1>
     <a href="#" id="addProject">Add Project</a>
-    <a href="#" id="addListNoProj">Add list without project</a>
+    <a href="#" id="addListNoProj">Add task without project</a>
 
     <div id="projectModel" class="projectModel">
       <h2>Add a new project</h2>
       <form class="form">
+        <div class="form-group">
         <fieldset>
           <label for="title">Project's title:</label>
-          <input type="text" id="title" required>
+          <input type="text" id="titleProject" required>
         </fieldset>
         <button id="submitProject">Create</button>
+        </div>
       </form>
+    </div>
+
+    <div id="taskModel" class="taskModel">
+      <h2>Add a new task</h2>
+      <form class="form">
+        <fieldset>
+          <label for="title">Project's title</label><br>
+          <input type="text" id="titleTask" required>
+        </fieldset>
+        <fieldset>
+          <label for="description">Project's description:</label><br>
+          <input type="text" id="descriptionTask" required>
+        </fieldset>
+        <fieldset>
+          <label for="Date">Project's Date:</label><br>
+          <input type="date" id="dataTask" required>
+        </fieldset>
+        <fieldset>
+          <label for="priority">Project's Priority (between 1 and 10):</label><br>
+          <input type="number" id="priorityTask" min="1" max="10" required>
+        </fieldset>
+        <button id="submitTask">Create</button>
+      </form>
+    </div>
+
+    <div id="displayProject">
+    </div>
+
+    <div id='taskWProject'>
     </div>
 
     <script src="main.js"></script>
