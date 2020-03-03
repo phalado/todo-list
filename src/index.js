@@ -1,5 +1,4 @@
 function Project(title, status, list) {
-  this.id
   this.title = title;
   this.list = [];
   this.list.push(list);
@@ -7,7 +6,6 @@ function Project(title, status, list) {
 }
 
 function List(title, desc, dueDate, priority, status) {
-  this.id
   this.title = title;
   this.desc = desc;
   this.dueDate = dueDate;
@@ -15,20 +13,31 @@ function List(title, desc, dueDate, priority, status) {
   this.status = status;
 }
 
+function addList(title, desc, dueDate, priority, status) {
+  const list = new List(
+    title,
+    desc,
+    dueDate,
+    priority,
+    status
+  );
+  return list;
+}
+
+function addProject(title, status, list) {
+  const project = new Project(
+    title,
+    status,
+    list
+  );
+  return project;
+}
+
 function testAddProj() {
-  let list1 = new List(
-    'testList',
-    'desc',
-    10/10/20,
-    1,
-    false);
-  console.log(list1);
-  let test = new Project(
-    'Test',
-    false,
-    list1
-    );
+  const test = addProject('Test', false, addList('testList', 'desc', '10/10/20', 1, false));
+  test.list.push(addList('testList2', 'desc2', '10/10/20', 1, true));
   console.log(test);
+  console.log(Project);
 }
 
 testAddProj();
