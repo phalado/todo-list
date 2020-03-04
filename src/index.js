@@ -49,19 +49,19 @@ function displaytask(index) {
     let tr = document.createElement('tr');
     table.appendChild(tr);
     let title = document.createElement('th');
-    title.innerHTML = "Title";
+    title.innerHTML = 'Title';
     tr.appendChild(title);
     let desc = document.createElement('th');
-    desc.innerHTML = "Task Description";
+    desc.innerHTML = 'Task Description';
     tr.appendChild(desc);
     let dueDate = document.createElement('th');
-    dueDate.innerHTML = "Limit Date";
+    dueDate.innerHTML = 'Limit Date';
     tr.appendChild(dueDate);
     let priority = document.createElement('th');
-    priority.innerHTML = "Priority";
+    priority.innerHTML = 'Priority';
     tr.appendChild(priority);
     let status = document.createElement('th');
-    status.innerHTML = "Status";
+    status.innerHTML = 'Status';
     tr.appendChild(status);
 
     for (let i = 0; i < allProjs[index].list.length; i += 1) {
