@@ -1,50 +1,16 @@
-import { Project, addProject } from './projects';
-import { List, addList } from './list';
+import { addProject, getProjectsData } from './projects';
+import {
+  addList, getTaskData, updateListStatus, closeModels,
+} from './list';
 import projectModel from './project-model';
 import taskModel from './task-model';
-
-// const allProjs = allProjects();
-
-function storeProjects(allProjs) {
-  let projs = JSON.stringify(allProjs);
-  localStorage.setItem("allProjs", projs);
-}
-
-function getProjects() {
-  let allProjs = localStorage.getItem("allProjs");
-  return JSON.parse(allProjs);
-}
-
-function openProjectModel() {
-  document.getElementById('projModel').style.display = 'grid';
-}
-
-function closeModels() {
-  document.getElementById('projModel').style.display = 'none';
-  document.getElementById('tskModel').style.display = 'none';
-}
-
-function opentaskModel(index = 0) {
-  document.getElementById('tskModel').style.display = 'grid';
-  document.getElementById('submitTask').addEventListener('click', () => { getTaskDataP(index); });
-}
-
-function updateListStatus(index, i) {
-  // console.log(allProjs.getProjs()[index].list[i]);
-  let allProjs = getProjects();
-  allProjs[index].list[i].status = !allProjs[index].list[i].status;
-  storeProjects(allProjs);
-  // console.log(allProjs.getProjs()[index].list[i]);
-}
+import { storeProjects, getProjects } from './localStorageManagement';
 
 function displaytask(index) {
-  // table.setAttribute('class', 'task-card');
-  // div.innerHTML = '';
   const div = document.createElement('div');
-  let allProjs = getProjects();
+  const allProjs = getProjects();
 
   if (allProjs[index] !== undefined) {
-
     const table = document.createElement('table');
     table.setAttribute('class', 'text-center table-bordered table-secondary');
     let tr = document.createElement('tr');
@@ -66,9 +32,7 @@ function displaytask(index) {
     tr.appendChild(status);
 
     for (let i = 0; i < allProjs[index].list.length; i += 1) {
-
       if (allProjs[index].list[i].title !== undefined) {
-        // console.log(allProjs.getProjs()[index].list[i])
         tr = document.createElement('tr');
         table.appendChild(tr);
 
@@ -98,7 +62,6 @@ function displaytask(index) {
                                id="taskStatus">`;
         }
         status.addEventListener('click', () => { updateListStatus(index, i); });
-        // allProjs.getProjs()[index].list[i].status;
         tr.appendChild(status);
       }
       div.appendChild(table);
@@ -106,48 +69,6 @@ function displaytask(index) {
     return div;
   }
   return 0;
-}
-
-function getTaskDataP(index) {
-
-  const title = document.getElementById('titleTask').value;
-  const desc = document.getElementById('descriptionTask').value;
-  const dueDate = document.getElementById('dataTask').value;
-  const priority = document.getElementById('priorityTask').value;
-  // console.log(priority);
-  let allProjs = getProjects();
-
-  if (title !== '' && desc !== '' && dueDate !== '' && priority !== '') {
-    allProjs[index].list.push(addList(title, desc, dueDate, priority, false));
-    storeProjects(allProjs);
-    closeModels();
-  }
-  
-  displayTask(index);
-}
-
-function displayProject() {
-  const div = document.getElementById('displayProject');
-  div.innerHTML = '';
-  // div.setAttribute('class', 'projectsTasks');
-
-  for (let i = 1; i < getProjects().length; i += 1) {
-    const div2 = document.createElement('div');
-    div2.setAttribute('class', 'projectsTasks mb-3');
-    const h2 = document.createElement('h2');
-    h2.innerHTML += getProjects()[i].title;
-    div2.appendChild(h2);
-    div2.appendChild(displaytask(i));
-    // div2.setAttribute('class', 'col-4');
-
-    const button = document.createElement('button');
-    button.innerHTML = 'add task';
-    button.setAttribute('id', `add-task${i}`);
-    div2.appendChild(button);
-    div.appendChild(div2);
-
-    document.getElementById(`add-task${i}`).addEventListener('click', () => { opentaskModel(i); });
-  }
 }
 
 function displayTaskWithout() {
@@ -159,88 +80,84 @@ function displayTaskWithout() {
   h2.innerHTML += getProjects()[0].title;
   div2.appendChild(h2);
   div2.appendChild(displaytask(0));
-  // div2.setAttribute('class', 'col-4');
   div.appendChild(div2);
 }
 
-function displayTask(index) {
+function getTaskInter(index) {
+  getTaskData(index);
+  location.reload();
+}
+
+function opentaskModel(index = 0) {
+  document.getElementById('tskModel').style.display = 'grid';
+  document.getElementById('projModel').style.display = 'none';
+  document.getElementById('submitTask').addEventListener('click', () => { getTaskInter(index); });
+}
+
+function displayProject() {
   const div = document.getElementById('displayProject');
   div.innerHTML = '';
 
-  const div2 = document.createElement('div');
-  const h2 = document.createElement('h2');
-  h2.innerHTML += getProjects()[index].title;
-  div2.appendChild(h2);
-  div2.appendChild(displaytask(index));
-  // div2.setAttribute('class', 'col-4');
-  div.appendChild(div2);
+  for (let i = 1; i < getProjects().length; i += 1) {
+    const div2 = document.createElement('div');
+    div2.setAttribute('class', 'projectsTasks mb-3');
+    const h2 = document.createElement('h2');
+    h2.innerHTML += getProjects()[i].title;
+    div2.appendChild(h2);
+    div2.appendChild(displaytask(i));
+
+    const button = document.createElement('button');
+    button.innerHTML = 'add task';
+    button.setAttribute('id', `add-task${i}`);
+    div2.appendChild(button);
+    div.appendChild(div2);
+
+    document.getElementById(`add-task${i}`).addEventListener('click', () => { opentaskModel(i); });
+  }
 }
 
-function getProjectsData() {
-  const title = document.getElementById('titleProject').value;
-  if (title !== '') {
-    storeProjects(addProject(title, false, [], getProjects()));
-    closeModels();
-  }
-  displayProject();
+function getProjectsInter() {
+  getProjectsData();
+  location.reload();
 }
 
-function getTaskData() {
-  const title = document.getElementById('titleTask').value;
-  const desc = document.getElementById('descriptionTask').value;
-  const dueDate = document.getElementById('dataTask').value;
-  const priority = document.getElementById('priorityTask').value;
-  // console.log(priority);
-  let allProjs = getProjects();
-
-  if (title !== '' && desc !== '' && dueDate !== '' && priority !== '') {
-    allProjs[0].list.push(addList(title, desc, dueDate, priority, false));
-    storeProjects(allProjs);
-    closeModels();
-  }
-  displayTaskWithout();
+function openProjectModel() {
+  document.getElementById('projModel').style.display = 'grid';
+  document.getElementById('tskModel').style.display = 'none';
 }
 
 function testAddProj(allProjs) {
-  // let allProjs = getProjects();
-  allProjs = addProject('Project', false, addList('testList', 'desc', '10/10/20', 1, false), allProjs);
-  allProjs = addProject('Project2', true, addList('testList', 'desc', '10/10/20', 1, true), allProjs);
-  allProjs[1].list.push(addList('testList2', 'desc2', '10/10/20', 1, true));
-  allProjs[0].list.push(addList('testList2', 'desc2', '10/10/20', 1, true));
-  allProjs[0].list.push(addList('testList3', 'desc3', '10/10/24', 1, false));
-  // console.log(test);
+  allProjs = addProject('Approve the code', false, addList('Review the code', 'Read all the code and see that everything is all right', '05/03/2020', 1, false), allProjs);
+  allProjs = addProject('Todo List', true, addList('Create reppository', 'Repository created at Github', '02/03/2020', 1, true), allProjs);
+  allProjs[1].list.push(addList('Approve it', 'Click on the "aproved" button', '05/03/2020', 1, false));
+  allProjs[2].list.push(addList('Create todo list project', 'Create the app as described in Odin Project and Microverse', '04/03/2020', 1, true));
+  allProjs[2].list.push(addList('Check for linter errors', 'Check errors using lint', '04/03/2020', 1, true));
+  allProjs[2].list.push(addList('Send for code review', 'Open a pull request on Github and send code for code review in Microverse', '04/03/2020', 1, true));
   return allProjs;
 }
 
 function init() {
   let allProjs = getProjects();
-  // console.log(allProjs);
   if (allProjs === null) {
     allProjs = [];
-    // console.log(allProjs);
     allProjs = addProject('Tasks', false, [], allProjs);
-    // console.log(allProjs);
     allProjs = testAddProj(allProjs);
   }
-  console.log(allProjs);
-
   storeProjects(allProjs);
 
   document.getElementById('projectModel').appendChild(projectModel());
   document.getElementById('taskModel').appendChild(taskModel());
 
   document.getElementById('addProject').addEventListener('click', openProjectModel);
-  document.getElementById('addListNoProj').addEventListener('click', opentaskModel);
+  document.getElementById('addListNoProj').addEventListener('click', () => { opentaskModel(0); });
 
-  document.getElementById('submitProject').addEventListener('click', getProjectsData);
+  document.getElementById('submitProject').addEventListener('click', getProjectsInter);
 
   document.getElementById('cancelProj').addEventListener('click', closeModels);
   document.getElementById('cancelTask').addEventListener('click', closeModels);
 
   displayTaskWithout();
   displayProject();
-  // displaytask();
 }
 
-// let allProjs = init();
 init();

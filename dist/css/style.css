@@ -17,7 +17,6 @@ th {
   top: 15%;
   left: 25%;
   background-color: white;
-  /*color: white;*/
   text-align: center;
   display: none;
   z-index: 50;
@@ -40,7 +39,6 @@ th {
   top: 15%;
   left: 25%;
   background-color: white;
-  /*color: white;*/
   text-align: center;
   display: none;
   z-index: 50;
@@ -83,10 +81,3 @@ th {
 .projectsTasks button{
   margin-top: 20px;
 }
-/*#displayTaskW {
-  width: 30%;
-}
-
-#displayProject {
-  width: 60%;
-}*/

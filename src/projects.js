@@ -1,21 +1,12 @@
+import { storeProjects, getProjects } from './localStorageManagement';
+import closeModels from './list';
+
 function Project(title, status, list) {
   this.title = title;
   this.list = [];
   this.list.push(list);
   this.status = status;
 }
-
-// const allProjects = () => {
-//   const allProjs = [];
-
-//   const addProj = (Project) => {
-//     allProjs.push(Project);
-//   };
-
-//   const getProjs = () => allProjs;
-
-//   return { allProjs, addProj, getProjs };
-// };
 
 function addProject(title, status, list, allProjs = this.allProjs) {
   const project = new Project(
@@ -27,5 +18,12 @@ function addProject(title, status, list, allProjs = this.allProjs) {
   return allProjs;
 }
 
+function getProjectsData() {
+  const title = document.getElementById('titleProject').value;
+  if (title !== '') {
+    storeProjects(addProject(title, false, [], getProjects()));
+    closeModels();
+  }
+}
 
-export { Project, addProject };
+export { Project, addProject, getProjectsData };
