@@ -28,5 +28,4 @@ function addProject(title, status, list, allProjs = this.allProjs) {
 }
 
 
-
 export { Project, allProjects, addProject };

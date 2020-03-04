@@ -2,15 +2,31 @@ body {
   margin: 15px;
 }
 
+header{
+  margin-bottom: 20px;
+}
+
 .projectModel {
   position: absolute;
   width: 50%;
   height: 50%;
   top: 15%;
   left: 25%;
+  background-color: white;
   /*color: white;*/
   text-align: center;
   display: none;
+  z-index: 50;
+}
+
+.projectModel h2 {
+  padding-top: 30px;
+  border-style: dotted;
+}
+
+.form-group {
+  padding: 15px;
+  border-style: solid;
 }
 
 .taskModel {
@@ -23,6 +39,12 @@ body {
   /*color: white;*/
   text-align: center;
   display: none;
+  z-index: 50;
+}
+
+.taskModel h2 {
+  padding: 30px;
+  border-style: dotted;
 }
 
 .taskModel fieldset {
@@ -38,4 +60,21 @@ body {
   margin-top: 15px;
   border-style: solid;
   background-color: white;
+}
+
+.task-card {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+}
+
+#displayTaskW {
+  width: 30%;
+}
+
+#displayProject {
+  width: 60%;
 }
