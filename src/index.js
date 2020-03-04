@@ -5,6 +5,11 @@ import taskModel from './task-model';
 
 const allProjs = allProjects();
 
+window.sessionStorage.setItem(0, allProjs.getProjs());
+let proj = window.sessionStorage.getItem(0);
+
+console.log(proj);
+
 function openProjectModel() {
   document.getElementById('projModel').style.display = 'grid';
 }
@@ -25,7 +30,7 @@ function updateListStatus(index, i) {
 }
 
 function displaytask(index) {
-  //table.setAttribute('class', 'task-card');
+  // table.setAttribute('class', 'task-card');
   // div.innerHTML = '';
   const div = document.createElement('div');
 
@@ -36,23 +41,22 @@ function displaytask(index) {
     let tr = document.createElement('tr');
     table.appendChild(tr);
     let title = document.createElement('th');
-    title.innerHTML = "Title";
+    title.innerHTML = 'Title';
     tr.appendChild(title);
     let desc = document.createElement('th');
-    desc.innerHTML = "Task Description";
+    desc.innerHTML = 'Task Description';
     tr.appendChild(desc);
     let dueDate = document.createElement('th');
-    dueDate.innerHTML = "Limit Date";
+    dueDate.innerHTML = 'Limit Date';
     tr.appendChild(dueDate);
     let priority = document.createElement('th');
-    priority.innerHTML = "Priority";
+    priority.innerHTML = 'Priority';
     tr.appendChild(priority);
     let status = document.createElement('th');
-    status.innerHTML = "Status";
+    status.innerHTML = 'Status';
     tr.appendChild(status);
 
     for (let i = 0; i < allProjs.getProjs()[index].list.length; i += 1) {
-
       if (allProjs.getProjs()[index].list[i].title !== undefined) {
         // console.log(allProjs.getProjs()[index].list[i])
         tr = document.createElement('tr');
@@ -75,18 +79,17 @@ function displaytask(index) {
         tr.appendChild(priority);
 
         status = document.createElement('th');
-        if (allProjs.getProjs()[index].list[i].status){
-          status.innerHTML = `<input type="checkbox" 
+        if (allProjs.getProjs()[index].list[i].status) {
+          status.innerHTML = `<input type="checkbox"
                                id="taskStatus" 
-                               checked>`
+                               checked>`;
         } else {
           status.innerHTML = `<input type="checkbox" 
-                               id="taskStatus">`
+                               id="taskStatus">`;
         }
-        status.addEventListener('click', () => { updateListStatus(index, i) })
+        status.addEventListener('click', () => { updateListStatus(index, i); });
         // allProjs.getProjs()[index].list[i].status;
         tr.appendChild(status);
-
       }
       div.appendChild(table);
     }
@@ -97,7 +100,7 @@ function displaytask(index) {
 
 function displayProject() {
   const div = document.getElementById('displayProject');
-  div.innerHTML = "";
+  div.innerHTML = '';
   // div.setAttribute('class', 'projectsTasks');
 
   for (let i = 1; i < allProjs.getProjs().length; i += 1) {
@@ -114,7 +117,7 @@ function displayProject() {
 
 function displayTaskWithout() {
   const div = document.getElementById('displayTaskW');
-  div.innerHTML = "";
+  div.innerHTML = '';
 
   const div2 = document.createElement('div');
   const h2 = document.createElement('h2');

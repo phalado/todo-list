@@ -6,6 +6,10 @@ header{
   margin-bottom: 20px;
 }
 
+th {
+  padding: 5px;
+}
+
 .projectModel {
   position: absolute;
   width: 50%;
@@ -71,8 +75,9 @@ header{
   width: 100%;
 }
 
-.simpleTasks, .projectsTasks {
-  border: solid;
+.vl {
+  border-left: 5px solid black;
+  height: auto;
 }
 
 /*#displayTaskW {
