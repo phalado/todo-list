@@ -80,6 +80,9 @@ th {
   height: auto;
 }
 
+.projectsTasks button{
+  margin-top: 20px;
+}
 /*#displayTaskW {
   width: 30%;
 }
