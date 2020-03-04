@@ -16,8 +16,14 @@ function taskModel() {
         <input type="date" id="dataTask" required>
       </fieldset>
       <fieldset>
-        <label for="priority">Task's Priority (between 1 and 10):</label><br>
-        <input type="number" id="priorityTask" min="1" max="10" required>
+        <label for="priority">Task's Priority:</label><br>
+        <select name="priority" id="priorityTask" size="1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </fieldset>
       <button id="submitTask">Create</button>
       <button id="cancelTask">Cancel</button>

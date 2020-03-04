@@ -71,10 +71,14 @@ header{
   width: 100%;
 }
 
-#displayTaskW {
+.simpleTasks, .projectsTasks {
+  border: solid;
+}
+
+/*#displayTaskW {
   width: 30%;
 }
 
 #displayProject {
   width: 60%;
-}
+}*/
