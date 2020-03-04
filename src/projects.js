@@ -5,17 +5,17 @@ function Project(title, status, list) {
   this.status = status;
 }
 
-const allProjects = () => {
-  const allProjs = [];
+// const allProjects = () => {
+//   const allProjs = [];
 
-  const addProj = (Project) => {
-    allProjs.push(Project);
-  };
+//   const addProj = (Project) => {
+//     allProjs.push(Project);
+//   };
 
-  const getProjs = () => allProjs;
+//   const getProjs = () => allProjs;
 
-  return { allProjs, addProj, getProjs };
-};
+//   return { allProjs, addProj, getProjs };
+// };
 
 function addProject(title, status, list, allProjs = this.allProjs) {
   const project = new Project(
@@ -23,9 +23,9 @@ function addProject(title, status, list, allProjs = this.allProjs) {
     status,
     list,
   );
-  allProjs.addProj(project);
-  return project;
+  allProjs.push(project);
+  return allProjs;
 }
 
 
-export { Project, allProjects, addProject };
+export { Project, addProject };
