@@ -85,6 +85,7 @@ function displayTaskWithout() {
 
 function getTaskInter(index) {
   getTaskData(index);
+  // eslint-disable-next-line no-restricted-globals
   location.reload();
 }
 
@@ -118,6 +119,7 @@ function displayProject() {
 
 function getProjectsInter() {
   getProjectsData();
+  // eslint-disable-next-line no-restricted-globals
   location.reload();
 }
 
