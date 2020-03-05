@@ -1,5 +1,4 @@
 import { storeProjects, getProjects } from './localStorageManagement';
-import closeModels from './list';
 
 function Project(title, status, list) {
   this.title = title;
@@ -22,7 +21,6 @@ function getProjectsData() {
   const title = document.getElementById('titleProject').value;
   if (title !== '') {
     storeProjects(addProject(title, false, [], getProjects()));
-    closeModels();
   }
 }
 
