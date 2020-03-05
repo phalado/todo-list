@@ -1,6 +1,6 @@
 import { getProjects } from './localStorageManagement';
 import {
-  getTaskData, updateListStatus,
+  getTaskData, updateListStatus, deleteList, updateList
 } from './list';
 import { getProjectsData } from './projects';
 
@@ -28,6 +28,12 @@ function displaytask(index) {
     let status = document.createElement('th');
     status.innerHTML = 'Status';
     tr.appendChild(status);
+    let edit = document.createElement('th');
+    edit.innerHTML = 'Edit';
+    tr.appendChild(edit);
+    let delet = document.createElement('th');
+    delet.innerHTML = 'Delete';
+    tr.appendChild(delet);
 
     for (let i = 0; i < allProjs[index].list.length; i += 1) {
       if (allProjs[index].list[i].title !== undefined) {
@@ -61,6 +67,16 @@ function displaytask(index) {
         }
         status.addEventListener('click', () => { updateListStatus(index, i); });
         tr.appendChild(status);
+
+        edit = document.createElement('th');
+        edit.innerHTML = '<a href="#">Edit</a>';
+        edit.addEventListener('click', () => { updateList(index, i); });
+        tr.appendChild(edit);
+
+        delet = document.createElement('th');
+        delet.innerHTML = '<a href="#">Delete</a>';
+        delet.addEventListener('click', () => { deleteList(index, i); });
+        tr.appendChild(delet);
       }
       div.appendChild(table);
     }

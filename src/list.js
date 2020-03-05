@@ -44,6 +44,20 @@ function updateListStatus(index, i) {
   storeProjects(allProjs);
 }
 
+function updateList(index, i) {
+  const allProjs = getProjects();
+  let list = allProjs[index].list[i];
+  document.getElementById('tskModelEdit').style.display = 'grid';
+}
+
+function deleteList(index, i) {
+  const allProjs = getProjects();
+  allProjs[index].list.splice(i, 1);
+  storeProjects(allProjs);
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+}
+
 export {
-  List, addList, getTaskData, updateListStatus, closeModels,
+  List, addList, getTaskData, updateListStatus, closeModels, deleteList, updateList
 };

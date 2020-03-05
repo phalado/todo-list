@@ -4,6 +4,7 @@ import {
 } from './list';
 import projectModel from './project-model';
 import taskModel from './task-model';
+import taskModelEdit from './task-model-edit';
 import { storeProjects, getProjects } from './localStorageManagement';
 import {
   displayTaskWithout, opentaskModel, displayProject, getProjectsInter, openProjectModel,
@@ -30,6 +31,7 @@ function init() {
 
   document.getElementById('projectModel').appendChild(projectModel());
   document.getElementById('taskModel').appendChild(taskModel());
+  document.getElementById('taskModelEdit').appendChild(taskModelEdit());
 
   document.getElementById('addProject').addEventListener('click', openProjectModel);
   document.getElementById('addListNoProj').addEventListener('click', () => { opentaskModel(0); });
