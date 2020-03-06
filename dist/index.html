@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="text-center">
+      <h1>List do to</h1>
+      <a href="#" id="addProject">Add Project</a>
+      <span class="mx-2">|</span>
+      <a href="#" id="addListNoProj">Add task without project</a>
+    </header>
+
+    <div id='projectModel'></div>
+    <div id="taskModel"></div>
+    <div id="taskModelEdit"></div>
+
+    <div class="main row">
+      <div id="displayTaskW" class="col-5 simpleTasks mx-2"></div>
+      <div class="vl"></div>
+      <div id="displayProject" class="col-6 mx-2"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
