@@ -2,7 +2,7 @@ import { getProjects } from './localStorageManagement';
 import {
   updateListStatus, deleteList, updateList, getTaskInter,
 } from './list';
-import { getProjectsData } from './projects';
+import { getProjectsData, deleteProject } from './projects';
 
 function displaytask(index) {
   const div = document.createElement('div');
@@ -116,12 +116,22 @@ function displayProject() {
     div2.appendChild(displaytask(i));
 
     const button = document.createElement('button');
-    button.innerHTML = 'add task';
+    button.innerHTML = 'Add task';
+    button.setAttribute('class', 'btn btn-primary');
     button.setAttribute('id', `add-task${i}`);
     div2.appendChild(button);
+
+
+    const buttonDelete = document.createElement('button');
+    buttonDelete.innerHTML = 'Delete project';
+    buttonDelete.setAttribute('id', `delete${i}`);
+    buttonDelete.setAttribute('class', 'btn btn-primary');
+    div2.appendChild(buttonDelete);
+
     div.appendChild(div2);
 
     document.getElementById(`add-task${i}`).addEventListener('click', () => { opentaskModel(i); });
+    document.getElementById(`delete${i}`).addEventListener('click', () => { deleteProject(i); });
   }
 }
 

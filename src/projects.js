@@ -24,4 +24,16 @@ function getProjectsData() {
   }
 }
 
-export { Project, addProject, getProjectsData };
+
+function deleteProject(index) {
+  const allProjs = getProjects();
+  allProjs.splice(index, 1);
+  storeProjects(allProjs);
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+}
+
+
+export {
+  Project, addProject, getProjectsData, deleteProject,
+};
