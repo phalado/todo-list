@@ -28,7 +28,7 @@ We are using:
 
 We using concepts of Single Responsibility and Tightly Coupled Objects.
 
-Full task description: <a href="https://www.theodinproject.com/courses/javascript/lessons/todo-list"> Odin Project.</a>
+Full task description: <a href="https://raw.githack.com/phalado/todo-list/develop/dist/index.html"> Odin Project.</a>
 
 
 For a live version click [here](https://raw.githack.com/phalado/todo-list/features/dist/index.html
