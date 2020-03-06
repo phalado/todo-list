@@ -11,12 +11,12 @@ import {
 } from './dom';
 
 function testAddProj(allProjs) {
-  allProjs = addProject('Approve the code', false, addList('Review the code', 'Read all the code and see that everything is all right', '05/03/2020', 1, false), allProjs);
-  allProjs = addProject('Todo List', true, addList('Create reppository', 'Repository created at Github', '02/03/2020', 1, true), allProjs);
-  allProjs[1].list.push(addList('Approve it', 'Click on the "aproved" button', '05/03/2020', 1, false));
-  allProjs[2].list.push(addList('Create todo list project', 'Create the app as described in Odin Project and Microverse', '04/03/2020', 1, true));
-  allProjs[2].list.push(addList('Check for linter errors', 'Check errors using lint', '04/03/2020', 1, true));
-  allProjs[2].list.push(addList('Send for code review', 'Open a pull request on Github and send code for code review in Microverse', '04/03/2020', 1, true));
+  allProjs = addProject('Approve the code', false, addList('Review the code', 'Read all the code and see that everything is all right', '2020-03-05', 1, false), allProjs);
+  allProjs = addProject('Todo List', true, addList('Create reppository', 'Repository created at Github', '2020-03-02', 1, true), allProjs);
+  allProjs[1].list.push(addList('Approve it', 'Click on the "aproved" button', '2020-03-05', 1, false));
+  allProjs[2].list.push(addList('Create todo list project', 'Create the app as described in Odin Project and Microverse', '2020-03-04', 1, true));
+  allProjs[2].list.push(addList('Check for linter errors', 'Check errors using lint', '2020-03-04', 1, true));
+  allProjs[2].list.push(addList('Send for code review', 'Open a pull request on Github and send code for code review in Microverse', '2020-03-04', 1, true));
   return allProjs;
 }
 
@@ -31,7 +31,7 @@ function init() {
 
   document.getElementById('projectModel').appendChild(projectModel());
   document.getElementById('taskModel').appendChild(taskModel());
-  document.getElementById('taskModelEdit').appendChild(taskModelEdit());
+  // document.getElementById('taskModelEdit').appendChild(taskModelEdit());
 
   document.getElementById('addProject').addEventListener('click', openProjectModel);
   document.getElementById('addListNoProj').addEventListener('click', () => { opentaskModel(0); });

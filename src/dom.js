@@ -1,6 +1,6 @@
 import { getProjects } from './localStorageManagement';
 import {
-  getTaskData, updateListStatus, deleteList, updateList
+  getTaskData, updateListStatus, deleteList, updateList, getTaskInter
 } from './list';
 import { getProjectsData } from './projects';
 
@@ -95,12 +95,6 @@ function displayTaskWithout() {
   div2.appendChild(h2);
   div2.appendChild(displaytask(0));
   div.appendChild(div2);
-}
-
-function getTaskInter(index) {
-  getTaskData(index);
-  // eslint-disable-next-line no-restricted-globals
-  location.reload();
 }
 
 function opentaskModel(index = 0) {
