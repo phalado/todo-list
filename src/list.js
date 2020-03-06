@@ -28,17 +28,6 @@ function closeModels() {
   }
 }
 
-function getTaskInter(index, i = null) {
-  if (i === null) {
-    getTaskData(index);
-  } else {
-    editTaskData(index, i)
-  }
-
-  // eslint-disable-next-line no-restricted-globals
-  location.reload();
-}
-
 function getTaskData(index) {
   const title = document.getElementById('titleTask').value;
   const desc = document.getElementById('descriptionTask').value;
@@ -67,6 +56,17 @@ function editTaskData(index, i) {
   }
 }
 
+function getTaskInter(index, i = null) {
+  if (i === null) {
+    getTaskData(index);
+  } else {
+    editTaskData(index, i);
+  }
+
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+}
+
 function updateListStatus(index, i) {
   const allProjs = getProjects();
   allProjs[index].list[i].status = !allProjs[index].list[i].status;
@@ -76,9 +76,14 @@ function updateListStatus(index, i) {
 function updateList(index, i) {
   const allProjs = getProjects();
   const list = allProjs[index].list[i];
+  // console.log(list);
 
   document.getElementById('taskModelEdit').innerHTML = '';
-  document.getElementById('taskModelEdit').appendChild(taskModelEdit(list));
+  document.getElementById('taskModelEdit').appendChild(taskModelEdit());
+  document.getElementById('titleTaskEdit').value = list.title;
+  document.getElementById('descriptionTaskEdit').value = list.desc;
+  document.getElementById('dataTaskEdit').value = list.dueDate;
+  document.getElementById('priorityTaskEdit').value = list.priority;
   document.getElementById('tskModelEdit').style.display = 'grid';
   document.getElementById('submitTaskEdit').addEventListener('click', () => { getTaskInter(index, i); });
   document.getElementById('cancelTaskEdit').addEventListener('click', closeModels);
@@ -93,5 +98,5 @@ function deleteList(index, i) {
 }
 
 export {
-  List, addList, getTaskData, updateListStatus, closeModels, deleteList, updateList, getTaskInter
+  List, addList, getTaskData, updateListStatus, closeModels, deleteList, updateList, getTaskInter,
 };

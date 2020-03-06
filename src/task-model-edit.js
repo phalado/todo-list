@@ -1,23 +1,23 @@
-function taskModelEdit(list) {
+function taskModelEdit() {
   const tasklines = document.createElement('div');
   tasklines.innerHTML = `
     <h2>Edit task</h2>
     <form class="form">
       <fieldset>
         <label for="title">Task's title</label><br>
-        <input type="text" id="titleTaskEdit" required value=${list.title}>
+        <input type="text" id="titleTaskEdit" required>
       </fieldset>
       <fieldset>
         <label for="description">Task's description:</label><br>
-        <input type="text" id="descriptionTaskEdit" required value=${list.desc}>
+        <input type="text" id="descriptionTaskEdit" required>
       </fieldset>
       <fieldset>
         <label for="Date">Task's Date:</label><br>
-        <input type="date" id="dataTaskEdit" required value=${list.dueDate}>
+        <input type="date" id="dataTaskEdit" required>
       </fieldset>
       <fieldset>
         <label for="priority">Task's Priority:</label><br>
-        <select name="priority" id="priorityTaskEdit" size="1  value=${list.priority}">
+        <select name="priority" id="priorityTaskEdit" size="1">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

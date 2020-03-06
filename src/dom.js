@@ -1,6 +1,6 @@
 import { getProjects } from './localStorageManagement';
 import {
-  getTaskData, updateListStatus, deleteList, updateList, getTaskInter
+  updateListStatus, deleteList, updateList, getTaskInter,
 } from './list';
 import { getProjectsData } from './projects';
 
