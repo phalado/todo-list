@@ -49,7 +49,8 @@ function displaytask(index) {
         tr.appendChild(desc);
 
         dueDate = document.createElement('th');
-        dueDate.innerHTML = allProjs[index].list[i].dueDate;
+        const dt = allProjs[index].list[i].dueDate.split('-');
+        dueDate.innerHTML = `${dt[2]}/${dt[1]}/${dt[0]}`;
         tr.appendChild(dueDate);
 
         priority = document.createElement('th');
